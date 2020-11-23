@@ -1,0 +1,4 @@
+Key wood-detecton (Production)
+Client ID : 181
+Secret Key : WpV9gm7QObhSJmYoaREC0DACUGxsN5pMpIZf7z2L
+Reference Code : Af3ZG6

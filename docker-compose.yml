@@ -1,0 +1,8 @@
+version: '3'
+services:
+  backend:
+    image: registry.gitlab.com/jarindevelop/ocr_backends:v1.0.22
+    ports:
+     - "9000:4242"
+    restart: on-failure
+
