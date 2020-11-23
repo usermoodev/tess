@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d2e17f84-bae4-4a7c-a04f-b96ff8537ff0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/apps/authen/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/authen/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/branch/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/branch/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/company/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/company/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/history/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/history/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/package/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/package/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/users/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/users/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/webapp/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/webapp/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/webhook/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/webhook/controller.py" afterDir="false" />
-    </list>
+    <list default="true" id="d2e17f84-bae4-4a7c-a04f-b96ff8537ff0" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,7 +26,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../bill-ocr-backend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -106,7 +97,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="36d3990b-9791-464b-82b6-67d1ba8062ef" name="Default Changelist" comment="" />
+      <changelist id="d2e17f84-bae4-4a7c-a04f-b96ff8537ff0" name="Default Changelist" comment="" />
       <created>1581495138444</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
