@@ -12,5 +12,4 @@ init_routes()
 createdatabase()
 
 
-
 app.run(host=api_run, debug=True ,port=4242 )

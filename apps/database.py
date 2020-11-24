@@ -71,8 +71,8 @@ url = f'postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}'
 print("connect sucess {}".format(url))
 app.config['SQLALCHEMY_DATABASE_URI']= url
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-app.config['SQLALCHEMY_POOL_SIZE'] = 20
-app.config['SQLALCHEMY_POOL_TIMEOUT'] = 300
+app.config['SQLALCHEMY_POOL_SIZE'] = os.getenv('SQLALCHEMY_POOL_SIZE', default=100)
+app.config['SQLALCHEMY_POOL_TIMEOUT'] = os.getenv('SQLALCHEMY_POOL_TIMEOUT', default=300)
 
 
 db = SQLAlchemy(app)
