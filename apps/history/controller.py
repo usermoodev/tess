@@ -37,10 +37,9 @@ def getlot():
         else:
             lot_data = table_lot.query.filter_by(branch_id=all_branch[x]).order_by(table_lot.dateupload.desc()).all()
         if lot_data == []:
-            get_branch = table_branch.query.filter_by(id=all_branch[x]).first()
+
             print("No history")
-            sess.close()
-            return json_response({"msg":"สาขา {} ที่คุณเลือกไม่มีข้อมูล กรุณาติ๊กออกจากรายการ".format(get_branch.name)},400)
+            pass
         else:
             for i in range (len(lot_data)):
                 # print(lot_data[i])
