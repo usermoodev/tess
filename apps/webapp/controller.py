@@ -95,9 +95,13 @@ def aidetection():
                                   dateupload=timenow,
                                   license_plate = licent)
             sess.add(createLot)
+        branchData = table_branch.query.filter_by(id=user_data.branch_id).first()
+
 
         sent_text(user_id, "วันที่ " + date +
                   "\nเวลา " + timenow_ + "น." +
+                  "\nชื่อสาขา " + branchData.name +
+                  "\nชื่อผู้ใช้งาน " + user_data.username +
                   "\n   *** Lot หมายเลข *** " +
                   "\n  " + lot_id +
                   "\n   ********************* " +

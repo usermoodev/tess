@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2e17f84-bae4-4a7c-a04f-b96ff8537ff0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/webapp/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/webapp/controller.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
