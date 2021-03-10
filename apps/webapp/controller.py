@@ -81,13 +81,7 @@ def aidetection():
 
         sent_image(user_id=user_id, bot_id=bot_id, fullpath=resahape_img_path)
         sent_image(user_id=user_id, bot_id=bot_id, fullpath=images_detected_path)
-        os.remove(resahape_img_path)
-        os.remove(images_detected_path)
-        try:
-            print("remove file in  = " , fullpath)
-            os.remove(fullpath)
-        except:
-            print("error remove")
+
         now = datetime.datetime.now()
         timenow = now + datetime.timedelta(minutes=7 * 60)
         date = timenow.strftime("%d/%m/%Y ")
@@ -156,6 +150,14 @@ def aidetection():
         sess.commit()
         closewebview(user_id=one_id, bot_id=bot_id)
         quickreply_inprocess(user_id=user_id , bot_id=bot_id , temp_id=temp_id , one_id=one_id , lot_id=lot_id)
+
+        try:
+            print("remove file in  = ", fullpath)
+            os.remove(resahape_img_path)
+            os.remove(images_detected_path)
+            os.remove(fullpath)
+        except:
+            print("error remove")
 
     sess.close()
     return json_response({"msg":"success"})
