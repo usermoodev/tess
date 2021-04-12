@@ -35,7 +35,8 @@ def getlot():
         if checkdate == 1 :
             lot_data = table_lot.query.filter_by(branch_id=all_branch[x]).order_by(table_lot.dateupload.desc()).filter(table_lot.dateupload <= ifend).filter(table_lot.dateupload >=ifstart).all()
         else:
-            lot_data = table_lot.query.filter_by(branch_id=all_branch[x]).order_by(table_lot.dateupload.desc()).all()
+            return json_response({"msg":"กรุณาเลือก วันที่ต้องการค้นหา" },400)
+            # lot_data = table_lot.query.filter_by(branch_id=all_branch[x]).order_by(table_lot.dateupload.desc()).all()
         if lot_data == []:
 
             print("No history")

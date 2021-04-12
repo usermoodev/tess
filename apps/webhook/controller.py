@@ -114,7 +114,8 @@ def webhook():
                                                          large_volume_edit=temp_data.large_volume_edit,
                                                          total_volume_edit=temp_data.total_volume_edit,
                                                          lot_id=temp_data.lot_id,
-                                                         license_plate=temp_data.license_plate)
+                                                         license_plate=temp_data.license_plate,
+                                                         backup_pic = temp_data.backup_pic)
                         sess.add(create_history)
 
                         sess.delete(temp_data)

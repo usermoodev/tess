@@ -6,6 +6,9 @@ from ..helper.helper import *
 sess = db.session
 from ..s3.s3 import *
 import datetime
+import shutil
+import os
+
 # import datetime
 
 
@@ -40,11 +43,20 @@ def aidetection():
         company_data = table_company.query.filter_by(id=user_data.company_id).first()
         now = datetime.datetime.now()
         timenow = now + datetime.timedelta(minutes=7*60)
-        now = timenow.strftime("date%d%m%Ytime%H%M")
+        now = timenow.strftime("date%d%m%Ytime%H%M%S%f")
         sent_text(user_id=user_id , messege="ได้รับภาพแล้วกำลังตรวจจับท่อนไม้" , bot_id=bot_id)
-        filepath = photopath
+        filepath = photopath + str(user_id) + "/"
+        if os.path.exists(filepath):
+            print("remove folder")
+            shutil.rmtree(filepath)
+            print("create folder")
+            os.makedirs(filepath)
+        else:
+            print("create folder")
+            os.makedirs(filepath)
+
         filename = str(now) + ".png"
-        fullpath = photopath+filename
+        fullpath = filepath+filename
         file.save(os.path.join(filepath,filename))
         print("save images in >> " , filepath+filename)
         s3_upload(path_file=fullpath, path_s3=path_s3, filename=filename)
@@ -58,12 +70,12 @@ def aidetection():
                               bot_id=bot_id,
                               length_wood=length_wood)
         resahape_img = result['data']['resahape_img']
-        resahape_img_path = createimageswebveiw(resahape_img, "before" + str(now) + '.png')
+        resahape_img_path = createimageswebveiw(resahape_img, "before" + str(now) + '.png' , user_id)
         s3_upload(path_file=resahape_img_path, path_s3=path_s3, filename="before" + str(now) + '.png')
         s3link_resahape_img = s3_generatelink(s3_path=path_s3, filename="before" + str(now) + '.png')
 
         images_detected = result['data']['result_img']
-        images_detected_path = createimageswebveiw(images_detected, "plot"+str(now)+'.png')
+        images_detected_path = createimageswebveiw(images_detected, "plot"+str(now)+'.png' , user_id)
         s3_upload(path_file=images_detected_path, path_s3=path_s3, filename="plot"+str(now)+'.png')
         s3link_detect = s3_generatelink(s3_path=path_s3, filename="plot"+str(now)+'.png')
         small = result['data']['wood_count']['Small']
@@ -149,19 +161,20 @@ def aidetection():
                                        comment = "",
                                        lot_id=lot_id,
                                        license_plate=licent,
-                                       length_wood=length_wood)
+                                       length_wood=length_wood,
+                                       backup_pic=s3link_notdetect)
         sess.add(create_temp)
         sess.commit()
         closewebview(user_id=one_id, bot_id=bot_id)
         quickreply_inprocess(user_id=user_id , bot_id=bot_id , temp_id=temp_id , one_id=one_id , lot_id=lot_id)
 
-        try:
-            print("remove file in  = ", fullpath)
-            os.remove(resahape_img_path)
-            os.remove(images_detected_path)
-            os.remove(fullpath)
-        except:
-            print("error remove")
+        # try:
+        #     print("remove file in  = ", fullpath)
+        #     os.remove(resahape_img_path)
+        #     os.remove(images_detected_path)
+        #     os.remove(fullpath)
+        # except:
+        #     print("error remove")
 
     sess.close()
     return json_response({"msg":"success"})

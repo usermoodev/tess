@@ -55,8 +55,8 @@ def createimages(data_base64,filename):
     # print ("fullpath in createimages >> ",fullpath)
     return fullpath
 
-def createimageswebveiw(data_base64,filename):
-    fullpath = photopath + filename
+def createimageswebveiw(data_base64,filename , user_id):
+    fullpath = photopath + str(user_id) + "/" + filename
     with open(fullpath, "wb") as fh:
         fh.write(base64.b64decode(data_base64))
     # print ("fullpath in createimages >> ",fullpath)

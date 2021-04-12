@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2e17f84-bae4-4a7c-a04f-b96ff8537ff0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/helper/helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/helper/helper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/history/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/history/controller.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/webapp/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/webapp/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/webhook/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/webhook/controller.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +24,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1XhP1e0RUc3spPPav9swcEh35nS" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -29,7 +33,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../timber-ppi-backend" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -121,26 +125,14 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1899" height="243" key="GridCell.Tab.0.bottom" timestamp="1606214829170">
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1615953760098">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="243" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606214829170" />
-    <state width="1899" height="243" key="GridCell.Tab.0.center" timestamp="1606214829170">
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1615953760098" />
+    <state x="667" y="255" width="585" height="530" key="find.popup" timestamp="1615535937860">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="243" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606214829170" />
-    <state width="1899" height="243" key="GridCell.Tab.0.left" timestamp="1606214829169">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="243" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606214829169" />
-    <state width="1899" height="243" key="GridCell.Tab.0.right" timestamp="1606214829170">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="243" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606214829170" />
-    <state x="489" y="228" width="1257" height="811" key="find.popup" timestamp="1606095839273">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="489" y="228" width="1257" height="811" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606095839273" />
+    <state x="667" y="255" width="585" height="530" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1615535937860" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

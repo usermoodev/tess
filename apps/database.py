@@ -153,6 +153,7 @@ class table_history(db.Model):
     lot_id_ref = db.relationship("table_lot", backref=backref('history', cascade="all,delete"), lazy=True)
     license_plate = db.Column(db.String(255))
     length_wood = db.Column(db.Float)
+    backup_pic = db.Column(db.String(255))
 
 class table_temp_history(db.Model):
     __tablename__ = 'temp_history'
@@ -188,6 +189,7 @@ class table_temp_history(db.Model):
     lot_id_ref = db.relationship("table_lot", backref=backref('temp_history', cascade="all,delete"), lazy=True)
     license_plate = db.Column(db.String(255))
     length_wood = db.Column(db.Float)
+    backup_pic = db.Column(db.String(255))
 
 class table_package(db.Model):
     __tablename__ = 'package'
