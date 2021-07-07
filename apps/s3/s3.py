@@ -1,7 +1,7 @@
 import boto3
 s3 = boto3.client('s3', endpoint_url='https://s3gw.inet.co.th:8082',
                   aws_access_key_id='OQINHJTDIYDKDZNC7BQV',
-                  aws_secret_access_key='6JAnvBYVFTY/rvQa7LmljpD2rM79jZl9k9FdnZub', )
+                  aws_secret_access_key='6JAnvBYVFTY/rvQa7LmljpD2rM79jZl9k9FdnZub', verify=False )
 
 bucket_name = "ocrproject"
 path_s3 = "wood_detection/"
