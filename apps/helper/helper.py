@@ -104,7 +104,7 @@ def detecttimberwebveiw(base64,small_case , medium_case , large_case,bot_id , le
         response = requests.request("POST", url, data=json.dumps(payload), headers=headers ,verify=False)
         print("Respnone from AI")
 
-        return response.json()
+        return response.json() , response.status_code
 
     # print (response.text)
     except:

@@ -60,10 +60,16 @@ if len(argv) > 1:
 # pass: admin
 # db: pgchicken
 
-DB_HOST = os.getenv('DB_HOST', default="203.151.56.230")
-DB_PORT = os.getenv('DB_PORT', default="31444")
+# DB_HOST = os.getenv('DB_HOST', default="203.151.56.230")
+# DB_PORT = os.getenv('DB_PORT', default="31444")
+# DB_USER = os.getenv('DB_USER', default="admin")
+# DB_PASSWORD = os.getenv('DB_PASSWORD', default="admin")
+# DB_NAME = os.getenv('DB_NAME', default="wood_detection")
+
+DB_HOST = os.getenv('DB_HOST', default="10.100.102.201")
+DB_PORT = os.getenv('DB_PORT', default="5432")
 DB_USER = os.getenv('DB_USER', default="admin")
-DB_PASSWORD = os.getenv('DB_PASSWORD', default="admin")
+DB_PASSWORD = os.getenv('DB_PASSWORD', default="admin@inet!")
 DB_NAME = os.getenv('DB_NAME', default="wood_detection")
 
 
@@ -113,6 +119,15 @@ class table_company(db.Model):
     small_case = db.Column(db.String(255))
     medium_case =  db.Column(db.String(255))
     large_case =  db.Column(db.String(255))
+
+class table_logs(db.Model):
+    __tablename__ = 'logs'
+    id = db.Column(db.String(8), primary_key=True, default=generate_uuid)
+    users_id  = db.Column(db.String(8))
+    event = db.Column(db.String(255))
+    status = db.Column(db.String(255))
+    date = db.Column(db.DateTime(255))
+
 
 
 

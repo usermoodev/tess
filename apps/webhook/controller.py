@@ -119,6 +119,13 @@ def webhook():
                         sess.add(create_history)
 
                         sess.delete(temp_data)
+                        now = datetime.datetime.now()
+                        timenow = now + datetime.timedelta(minutes=7 * 60)
+                        create_logs = table_logs(users_id=temp_data.users_id,
+                                                 event="users : {} confirm data detect to history ref {}".format(temp_data.users_id , temp_data.id),
+                                                 status="info",
+                                                 date=timenow)
+                        sess.add(create_logs)
                         sess.commit()
                         sent_text(user_id=user_id , bot_id=bot_id , messege="OK ฉันบันทึกผลการตรวจจับลงในระบบให้เรียบร้อยแล้ว")
                         quickreply_forend(user_id=user_id , bot_id=bot_id , one_id=one_id, lot_id=data['message']['data']['lot_id'])
@@ -126,11 +133,21 @@ def webhook():
                         print("case not confirm")
                         temp_data = table_temp_history.query.filter_by(id=data['message']['data']['notconfirm']).first()
                         sess.delete(temp_data)
+                        now = datetime.datetime.now()
+                        timenow = now + datetime.timedelta(minutes=7 * 60)
+                        create_logs = table_logs(users_id=temp_data.users_id,
+                                                 event="users : {} delete data detect from temp ref {}".format(
+                                                     temp_data.users_id, temp_data.id),
+                                                 status="warning",
+                                                 date=timenow)
+                        sess.add(create_logs)
                         sess.commit()
                         sent_text(user_id=user_id, bot_id=bot_id, messege="OK ฉันลบผลการตรวจจับออกจากระบบให้เรียบร้อยแล้ว")
                         quickreply_forend(user_id=user_id, bot_id=bot_id, one_id=one_id, lot_id=data['message']['data']['lot_id'])
                     elif 'success' in data['message']['data']:
                         history_data = table_history.query.filter_by(lot_id=data['message']['data']['success']).all()
+
+                        user_idlog = ""
                         total_small = 0
                         total_medium = 0
                         total_large = 0
@@ -141,6 +158,7 @@ def webhook():
                         total_large_volume = 0
                         total_total_volume = 0
                         for i in history_data:
+                            user_idlog = i.users_id
                             small = None
                             medium = None
                             large = None
@@ -195,6 +213,18 @@ def webhook():
                                                                                                  "large_volume":total_large_volume,
                                                                                                  "total_volume":total_total_volume})
                         sess.commit()
+                        try:
+                            now = datetime.datetime.now()
+                            timenow = now + datetime.timedelta(minutes=7 * 60)
+                            create_logs = table_logs(users_id=user_idlog,
+                                                     event="users : {} finish process ! sum all data {}".format(
+                                                         user_idlog, data['message']['data']['success']),
+                                                     status="info",
+                                                     date=timenow)
+                            sess.add(create_logs)
+                            sess.commit()
+                        except:
+                            print("in sum cannot create logs")
                         sent_text(user_id=user_id, bot_id=bot_id,messege="เสร็จสิ้นกระบวนการตรวจจับแล้ว")
                 else:
                     print("from one chat")

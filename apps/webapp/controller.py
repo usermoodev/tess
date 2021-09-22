@@ -17,6 +17,8 @@ def cancel_edit():
     closewebview(user_id=data['one_id'], bot_id=data['bot_id'])
     quickreply_edit(user_id=data['user_id'], bot_id=data['bot_id'], temp_id=data['temp_id'], one_id=data['one_id'],
                     lot_id=data['lot_id'])
+
+
     return json_response(data)
 def aidetection():
 
@@ -63,12 +65,23 @@ def aidetection():
         s3link_notdetect = s3_generatelink(s3_path=path_s3, filename=filename)
         base64code = createBase64webveiw(filepath=filepath,filename=filename)
 
-        result = detecttimberwebveiw(base64=base64code,
+        result , status_code = detecttimberwebveiw(base64=base64code,
                               small_case=company_data.small_case,
                               medium_case=company_data.medium_case,
                               large_case=company_data.large_case,
                               bot_id=bot_id,
                               length_wood=length_wood)
+        if status_code != 200 :
+            sent_text(user_id, "ขณะนี้ระบบอาจมีปัญหา กรุณาติดต่อเจ้าหน้าที่  \n "
+                               "ref_code : No 200 response", bot_id)
+            print("status_code => " , status_code )
+            closewebview(user_id=one_id, bot_id=bot_id)
+        if "resahape_img" not in result['data']:
+            sent_text(user_id , "ai ไม่สามารถ วงรูปภาพได้ กรุณานำภาพติดต่อเจ้าหน้าที่  \n "
+                                "ref_code : nokey resahape_img" , bot_id)
+            print("status_code => ", status_code)
+            closewebview(user_id=one_id, bot_id=bot_id)
+
         resahape_img = result['data']['resahape_img']
         resahape_img_path = createimageswebveiw(resahape_img, "before" + str(now) + '.png' , user_id)
         s3_upload(path_file=resahape_img_path, path_s3=path_s3, filename="before" + str(now) + '.png')
@@ -164,7 +177,13 @@ def aidetection():
                                        length_wood=length_wood,
                                        backup_pic=s3link_notdetect)
         sess.add(create_temp)
+        create_logs = table_logs(users_id=user_data.id,
+                                 event="users : {} upload image to detect ref temp_id {}".format(user_data.id , temp_id),
+                                 status="info" ,
+                                 date=timenow)
+        sess.add(create_logs)
         sess.commit()
+
         closewebview(user_id=one_id, bot_id=bot_id)
         quickreply_inprocess(user_id=user_id , bot_id=bot_id , temp_id=temp_id , one_id=one_id , lot_id=lot_id)
 
@@ -274,6 +293,12 @@ def edittemp():
               )
     quickreply_edit(user_id=data['user_id'], bot_id=data['bot_id'], temp_id=data['temp_id'], one_id=data['one_id'], lot_id=data['lot_id'])
 
+    create_logs = table_logs(users_id=temp_data.users_id,
+                             event="users : {} edit result detect ref temp :".format(temp_data.users_id),
+                             status="warning",
+                             date=datetime.datetime.now() + datetime.timedelta(hours=7))
+    sess.add(create_logs)
+    sess.commit()
     sess.close()
     # quickreply(user_id=data['user_id'] , bot_id=data['bot_id'] , temp_id=data['temp_id'] , one_id=data['one_id'])
     return json_response({"msg":"ok"})
